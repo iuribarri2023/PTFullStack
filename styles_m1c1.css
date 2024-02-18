@@ -1,0 +1,71 @@
+:root{
+    --color-grey:rgb(250,250,250)
+}
+.gridOne{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    background-color:var(--color-grey) ;
+}
+.gridTwo{
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    background-color: var(--color-grey);
+}
+.gridTwo>.gridTwo-a{
+    background-color: red;
+}
+.gridTwo>.gridTwo-b{
+    background-color: blue;
+}
+.gridTwo>.gridTwo-c{
+    background-color: yellow;
+}
+.gridThree{
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+    width: 500px;
+    height: 300px;
+    background-color: var(--color-grey);
+}
+.gridThree>.gridThree-b>img{
+    width: 500px;
+    height: 225px;
+    object-fit:  cover;
+    background-color: var(--color-grey);
+}
+.gridFour{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    background-color: green;
+    width: 500px;
+}
+#gridFour-b{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.gridFive{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    background-color: var(--color-grey);
+    width: 500px;
+}
+#gridFive-b{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+#gridFive-b>img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.gridSix{
+    width: 500px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    background-color: lightgrey;
+}
+#gridSix-b{
+    font-family:"Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
