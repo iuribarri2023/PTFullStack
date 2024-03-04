@@ -1,0 +1,169 @@
+:root{
+    --squareWidth:100px;
+    --squareHeight:100px;
+    --squareColour1:#73dab2;
+    --squareColour2:#3d8b6d;
+    --squareColour3:#0b6643;
+    --square1Margin:5px;
+    --square2Margin:2px;
+    --backgroundFlex6:#f1f1f1;
+    --flexmarginleft-bottom:10px;
+}
+.square{
+    width: var(--squareWidth);
+    height: var(--squareHeight);
+    background-color: var(--squareColour1);
+}
+.item{
+    width: var(--squareWidth);
+    height: var(--squareHeight);
+    background-color: var(--squareColour3);
+    margin: 2px;
+}
+.flex{
+    margin:var(--flexmarginleft-bottom)
+}
+.flexOne{
+    display: flex;
+    flex-direction: row;
+    margin-left:10px;
+    margin-bottom: 10px;
+}
+.flexOne>.square{
+    margin:5px;
+}
+
+.flexTwo{
+    display:flex;
+    flex-direction: column;
+    margin-left:var(--flexmarginleft-bottom);
+    margin-bottom: var(--flexmarginleft-bottom);;
+}
+.flexTwo>.square{
+    margin:2px;
+}
+.flexThree{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-left:var(--flexmarginleft-bottom);
+    margin-bottom: var(--flexmarginleft-bottom)
+}
+.flexThree>.square{
+    margin:2px;
+}
+.flexFour{
+    display: flex;
+    flex-flow: wrap;
+    margin-left:var(--flexmarginleft-bottom);
+    margin-bottom: var(--flexmarginleft-bottom);
+    width: 350px;
+}
+.flexFour>.square{
+    margin:5px;
+    background-color: var(--squareColour2);
+}
+.flexFive{
+    display: flex;
+    width: 350px;
+}
+.flexFive>.square{
+    margin:5px;
+    background-color: var(--squareColour2);
+}
+
+#grow{
+    flex-grow: 2;
+}
+.flexSix{
+    width: 500px;
+    height: 400px;
+    background-color: var(--backgroundFlex6);
+    display: flex;
+    flex-direction: column;
+    margin-left:var(--flexmarginleft-bottom);
+    margin-bottom: var(--flexmarginleft-bottom);
+}
+.flexSix>.one{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.flexSix>.two{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px 0;
+    background-color: #d6d6d6;
+}
+.flexSix>.three{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.flexSeven{
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #eeeeee;
+    margin-bottom: var(--flexmarginleft-bottom);
+    margin-left: var(--flexmarginleft-bottom);
+}
+.flexSeven>.one,.two,.three,.four{
+    display: flex;
+    flex-direction: column;
+}
+.flexSeven>.one{
+    justify-content: center;
+}
+.flexSeven>.two{
+    justify-content: flex-end;
+}
+.flexSeven>.three{
+    justify-content: flex-start;
+}
+.flexSeven>.four{
+    justify-content: space-between;
+}
+
+.flexEight{
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    width: 300px;
+    background-color:#eeeeee ;
+    margin-bottom: var(--flexmarginleft-bottom);
+    margin-left: var(--flexmarginleft-bottom);
+}
+.flexEight>.one{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.flexEight>.two{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.flexEight>.three{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.flexNine{
+    display: flex;
+    flex-direction: row;
+    width: 450px;
+    height: 250px;
+    justify-content: space-evenly;
+    background-color:#eeeeee ;
+}
+.flexNine>.one,.two,.three,.four{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#special{
+    align-self: flex-end;
+}
