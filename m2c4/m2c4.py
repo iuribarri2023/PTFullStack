@@ -1,9 +1,10 @@
 import math
+from decimal import Decimal
 my_list= ['Germany','France','Portugal','Italy','Spain']
 my_tuple = ("Maries Curie","Albert Einstein","Isaac Newton","Charles Darwin","Nikola Tesla")
 my_float= 10.554
 my_integer= 4
-my_decimal_= 1/3
+my_decimal_= Decimal(math.sqrt(2))
 my_dictionary =  {
     "name": "Eustaquio",
     "age": 30,
@@ -27,5 +28,5 @@ my_list[0]="Finland"
 new_list= sorted(my_list)
 print(new_list)
 #9 Use reasignment to add an element to your tuple
-my_tuple2= my_tuple + ("Leonardo Da Vinci",)
-print(my_tuple2)
+my_tuple += ("Leonardo Da Vinci",)
+print(my_tuple)
