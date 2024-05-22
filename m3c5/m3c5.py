@@ -14,8 +14,15 @@ print(resultado)
 #Comprobación de nombre en la lista
 nombre= "Enrique"
 lista_nombre= ["Jessica","Paul","George","Henry","Adán"]
-for item in lista_nombre:
-    if nombre == item:
-        print("El nombre está en la lista!") 
+def comprobar_nombre(n):
+    lista_contiene= None
+    for item in lista_nombre:
+        if n == item:
+            lista_contiene= True
+            break
+    if lista_contiene:
+        print("El nombre está en la lista!")     
     else:
         print ("El nombre no está en la lista")
+
+comprobar_nombre(nombre)
