@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions sobre Python</title>
+    <link rel="stylesheet" href="m3c6.css">
+</head>
+<body>
+    <div class="heading">
+        <img class="heading-logo" src="python-logo.jpg" alt="">
+        <div class="heading-title">
+            <h1 class="heading-topic">Modulo 3- Checkpoint 6: Python</h1>
+            <h3 class="heading-author">Iñigo Uribarri</h3>
+        </div>
+        
+    </div>
+    <div class="question">
+        <button class="question-btn">
+            <h3 class="question-content">¿Para que usamos las clases en Python?</h3>
+        </button>
+        
+        <div class="answer">
+            <p>En Python, usamos clases para crear nuestros propios tipos de datos, que nos permiten agrupar datos y comportamientos relacionados en una única entidad. Las clases son plantillas para crear objetos. 
+                Cada objeto creado a partir de una clase puede tener sus propios valores para las propiedades definidas en la clase y puede utilizar los métodos definidos en la clase.</p>
+            <pre class="code-example">
+
+                class Perro:
+                    def __init__(self, nombre, edad):
+                    self.nombre = nombre
+                    self.edad = edad
+
+                def ladrar(self):
+                    print(f"{self.nombre} dice ¡Guau!")
+
+                # Crear un objeto de la clase Perro
+                mi_perro = Perro("Txakur", 3)
+                mi_perro.ladrar()  # Output: Txakur dice ¡Guau!
+
+            </pre>
+            
+            <p>
+                En este ejemplo, Perro es una clase con propiedades (nombre, edad) y métodos (ladrar). 
+                Creamos un objeto 'mi_perro' a partir de la clase 'Perro'
+            </p>
+        </div>
+    </div>
+
+    <div class="question">
+        <button class="question-btn">
+            <h3 class="question-content">¿Qué método se ejecuta automáticamente cuando se crea una instancia de una clase?</h3>
+        </button>
+        
+        <div class="answer">
+            <p>El método __init__ se ejecuta automáticamente cuando se crea una instancia de una clase. 
+                Este método se utiliza para inicializar los atributos del objeto con valores específicos cuando se crea.
+            </p>
+            <pre class="code-example">
+
+                class Persona:
+                    def __init__(self, nombre, edad):
+                        self.nombre = nombre
+                        self.edad = edad
+
+                # Crear una instancia de la clase Persona
+                persona = Persona("Iñigo", 31)
+                print(persona.nombre)  # Output: Iñigo
+                print(persona.edad)    # Output: 31
+            </pre>
+            <p>Aquí,`__init__`  inicializa los atributos nombre y edad de la instancia persona.</p>
+        </div>
+    </div>
+
+    <div class="question">
+        <button class="question-btn">
+            <h3 class="question-content">¿Cuáles son los tres verbos de API?</h3>
+        </button>
+        <p>Los tres verbos principales de una API son:</p>
+        <div class="answer">
+            <div class="answer-section">
+                <h4 class="answer-subsection">GET: Solicitar datos del servidor</h4>
+                <p class="answer-content">El verbo GET se utiliza para obtener datos del servidor. 
+                    Es una solicitud de solo lectura y no modifica el estado del servidor. Es comúnmente usado para recuperar recursos.
+                </p>
+                <p>Solicitud GET:</p>
+            <pre class="code-example">
+                
+                GET /usuarios HTTP/1.1
+                Host: api.ejemplo.com
+                Authorization: Bearer tu_token_de_autorizacion
+                Content-Type: application/json
+            </pre>
+            <p>Respuesta:</p>
+            <pre class="code-example">
+                [
+                    {
+                        "id": 1,
+                        "nombre": "Juan Pérez",
+                        "correo": "juan.perez@example.com"
+                    },
+                    {
+                        "id": 2,
+                        "nombre": "Ana Gómez",
+                        "correo": "ana.gomez@example.com"
+                    }
+                ]
+
+            </pre>
+            <p>Este ejemplo muestra cómo una solicitud GET a la ruta /usuarios podría devolver una lista de usuarios en formato JSON.</p>
+            </div>
+            <div class="answer-section">
+                <h4 class="answer-subsection">POST: Enviar datos al servidor para crear o actualizar un recurso</h4>
+                <p class="answer-content">El verbo POST se utiliza para enviar datos al servidor, típicamente para crear un nuevo recurso. 
+                    Puede también ser utilizado para actualizar recursos, aunque normalmente se utiliza PUT o PATCH para actualizaciones
+                </p>
+            <p>Solicitud Post</p>
+            <pre class="code-example">
+                
+                POST /usuarios HTTP/1.1
+                Host: api.ejemplo.com
+                Authorization: Bearer tu_token_de_autorizacion
+                Content-Type: application/json
+
+                {
+                    "nombre": "Carlos Martínez",
+                    "correo": "carlos.martinez@example.com",
+                    "contrasena": "contrasenaSegura123"
+                }
+
+            </pre>
+            <p>Respuesta</p>
+            <pre class="code-example">
+
+                HTTP/1.1 201 Created
+                Content-Type: application/json
+                            
+                {
+                    "id": 3,
+                    "nombre": "Carlos Martínez",
+                    "correo": "carlos.martinez@example.com"
+                }
+            </pre>
+            <p>En este ejemplo, enviamos una solicitud POST a la ruta /usuarios con los datos del nuevo usuario en el cuerpo de la solicitud. 
+                La respuesta incluye los datos del usuario recién creado, con su id asignado por el servidor.
+            </p>
+        
+            </div>
+            <div class="answer-section">
+                <h4 class="answer-subsection">DELETE: Eliminar un recurso del servidor</h4>
+                <p class="answer-content">El verbo DELETE se utiliza para eliminar un recurso específico del servidor. 
+                    Es una operación destructiva y modifica el estado del servidor eliminando el recurso especificado.
+                </p>
+            <p>Solicitud Delete</p>
+            <pre class="code-example">
+                
+                DELETE /usuarios/1 HTTP/1.1
+                Host: api.ejemplo.com
+                Authorization: Bearer tu_token_de_autorizacion
+                Content-Type: application/json
+
+            </pre>
+            <p>Respuesta</p>
+            <pre class="code-example">
+
+                HTTP/1.1 204 No Content
+            </pre>
+            <p>En este ejemplo, enviamos una solicitud POST a la ruta /usuarios con los datos del nuevo usuario en el cuerpo de la solicitud. 
+                La respuesta incluye los datos del usuario recién creado, con su id asignado por el servidor.
+            </p>
+            </div>
+        </div> 
+    </div>
+    
+    <div class="question">
+        <button class="question-btn">
+            <h3 class="question-content">¿Es MongoDB una base de datos SQL o NoSQL?</h3>
+        </button>
+        <p>
+            MongoDB es una base de datos NoSQL. NoSQL se refiere a "Not Only SQL" o "No SQL" (sin SQL), un enfoque que se aleja del modelo relacional tradicional de las bases de datos SQL. 
+            MongoDB es una de las bases de datos NoSQL más populares y se caracteriza por su flexibilidad y capacidad para manejar grandes volúmenes de datos no estructurados o semi-estructurados.
+        </p>
+        
+        <div class="answer">
+            <h4>Diferencias clave entre SQL y NoSQL</h4>
+
+            <div class="answer-section">
+                <h4 class="answer-subsection">1. Modelo de datos</h4>
+                <ul>
+                    <li>Bases de datos SQL:</li>
+                    <p>
+                        Utilizan un modelo relacional, donde los datos se almacenan en tablas con filas y columnas. 
+                        Cada fila representa un registro único, y cada columna representa un campo de datos. 
+                        Las relaciones entre diferentes tablas se definen usando claves foráneas.
+                    </p>
+
+                    <li>MongoDB (NoSQL):</li>
+                    <p>
+                        Utiliza un modelo de datos basado en documentos. 
+                        Los datos se almacenan en documentos JSON (JavaScript Object Notation) o BSON (Binary JSON), organizados en colecciones. 
+                        Cada documento es una estructura de datos autónoma, análoga a una fila en una tabla SQL, pero más flexible, ya que no necesita adherirse a un esquema fijo
+                    </p>
+
+                </ul>
+               
+            </div>
+
+            <div class="answer-section">
+                <h4 class="answer-subsection">2. Esquema</h4>
+                <ul>
+                    <li>Bases de datos SQL:</li>
+                    <p>
+                        Requiere un esquema predefinido y estructurado. 
+                        Antes de insertar datos, las tablas deben ser diseñadas con tipos de datos específicos para cada columna.
+                    </p>
+
+                    <li>MongoDB (NoSQL):</li>
+                    <p>
+                        No requiere un esquema fijo. 
+                        Cada documento en una colección puede tener una estructura diferente, lo que permite una mayor flexibilidad en el diseño y almacenamiento de datos.
+                    </p>
+
+                </ul>
+               
+            </div>
+
+            <div class="answer-section">
+                <h4 class="answer-subsection">3. Escalabilidad</h4>
+                <ul>
+                    <li>Bases de datos SQL:</li>
+                    <p>
+                        Normalmente escala verticalmente, es decir, para manejar más carga se requiere mejorar el hardware del servidor (CPU, RAM, almacenamiento, etc.).
+                    </p>
+
+                    <li>MongoDB (NoSQL):</li>
+                    <p>
+                        Escala horizontalmente, lo que significa que se puede distribuir la carga entre múltiples servidores, o nodos, a través de un proceso llamado "sharding".
+                        Esto hace que MongoDB sea muy adecuado para aplicaciones distribuidas y para manejar grandes volúmenes de datos.
+                    </p>
+
+                </ul>
+               
+            </div>
+
+            <div class="answer-section">
+                <h4 class="answer-subsection">4. Consultas y lenguajes de consulta</h4>
+                <ul>
+                    <li>Bases de datos SQL:</li>
+                    <p>
+                        Utiliza el lenguaje SQL (Structured Query Language) para realizar consultas. 
+                        SQL es un lenguaje estándar ampliamente conocido y usado para la manipulación de bases de datos relacionales.
+                    </p>
+
+                    <li>MongoDB (NoSQL):</li>
+                    <p>
+                        No usa SQL. En su lugar, las consultas se realizan usando métodos específicos que operan sobre documentos JSON, lo que permite búsquedas y manipulaciones complejas de datos anidados.
+                    </p>
+
+                </ul>
+               
+            </div>
+            <p>
+                En resumen, MongoDB es una base de datos NoSQL, diseñada para ofrecer flexibilidad, escalabilidad, y alta disponibilidad. Se diferencia de las bases de datos SQL en su modelo de datos, flexibilidad de esquema, y su enfoque en la escalabilidad horizontal. Es ideal para aplicaciones que manejan grandes volúmenes de datos no estructurados o semi-estructurados, y que requieren una rápida evolución del modelo de datos sin las restricciones de un esquema fijo.
+            </p>
+        </div>
+    </div>
+    <div class="question">
+        <button class="question-btn">
+            <h3 class="question-content">¿Qué es una API?</h3>
+        </button>
+        <p>
+            Una API, o "Interfaz de Programación de Aplicaciones" (por sus siglas en inglés, Application Programming Interface), es un conjunto de reglas y definiciones que permiten a diferentes programas comunicarse entre sí. Las APIs son esenciales en el desarrollo de software moderno, ya que permiten que las aplicaciones se integren y colaboren, compartiendo datos y funcionalidades.
+        </p>
+        
+        <div class="answer">
+            <h4>¿Cómo funciona una API?</h4>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">1. Intermediario entre aplicaciones</h4>
+                <p>
+                    La API actúa como un intermediario entre dos aplicaciones diferentes. Imagina que tienes una aplicación móvil que necesita obtener datos de un servidor para mostrar información actualizada. En lugar de que la aplicación tenga acceso directo a la base de datos del servidor, se utiliza una API para solicitar los datos. La API recibe la solicitud, la procesa, y luego devuelve la respuesta con los datos solicitados.
+                </p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">2. Tipos de APIs</h4>
+                <ul>
+                    <li>APIs Web:</li>
+                    <p>
+                        Son las más comunes. Permiten la comunicación entre un cliente (como un navegador o una app) y un servidor a través de internet. Utilizan protocolos como HTTP o HTTPS.
+                    </p>
+    
+                    <li>APIs de Sistema Operativo:</li>
+                    <p>
+                        Permiten que las aplicaciones interactúen con el sistema operativo, como acceder a recursos del hardware o realizar tareas específicas (por ejemplo, abrir un archivo o conectar con una red).
+                    </p>
+    
+                    <li>APIs de Biblioteca:</li>
+                    <p>
+                        Estas APIs permiten que una aplicación acceda a funcionalidades de una biblioteca de software, por ejemplo, para procesar imágenes o manejar archivos comprimidos.
+                    </p>
+                </ul>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">3. Verbos y operaciones en una API</h4>
+                <p>
+                    Las APIs web generalmente utilizan verbos HTTP para definir qué acción se realizará. Estos verbos incluyen:
+                </p>
+                <ul>
+                    <li><strong>GET:</strong></li>
+                    <p>Se usa para leer datos. Por ejemplo, GET /usuarios podría usarse para obtener una lista de usuarios.</p>
+                    
+                    <li><strong>POST:</strong></li>
+                    <p>Se utiliza para crear un nuevo recurso o enviar datos al servidor. Por ejemplo, POST /usuarios podría enviar los datos de un nuevo usuario para que se guarde en la base de datos.</p>
+                    
+                    <li><strong>PUT:</strong></li>
+                    <p>Se emplea para actualizar un recurso existente. Por ejemplo, PUT /usuarios/1 podría actualizar la información del usuario con ID 1.</p>
+                    
+                    <li><strong>DELETE:</strong></li>
+                    <p>Se usa para eliminar un recurso. Por ejemplo, DELETE /usuarios/1 eliminaría el usuario con ID 1.</p>
+                </ul>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">4. Ejemplos prácticos de uso de una API</h4>
+                <ul>
+                    <li><strong>APIs de redes sociales:</strong></li>
+                    <p>
+                        Permiten que tu aplicación publique actualizaciones o acceda a datos de plataformas como Twitter o Facebook.
+                    </p>
+    
+                    <li><strong>APIs de pagos:</strong></li>
+                    <p>
+                        Permiten integrar funcionalidades de pago, como procesar transacciones con tarjetas de crédito mediante servicios como Stripe o PayPal.
+                    </p>
+    
+                    <li><strong>APIs de mapas:</strong></li>
+                    <p>
+                        Permiten que las aplicaciones integren mapas y servicios de geolocalización, como Google Maps, en sus interfaces.
+                    </p>
+                </ul>
+            </div>
+            
+            <p>
+                En resumen, una API es una herramienta poderosa que facilita la comunicación entre diferentes sistemas de software, permitiendo a los desarrolladores construir aplicaciones más complejas, integradas y funcionales al aprovechar servicios y datos de otros sistemas.
+            </p>
+        </div>
+    </div>
+    <div class="question">
+        <button class="question-btn">
+            <h3 class="question-content">¿Qué es Postman?</h3>
+        </button>
+        <p>
+            Postman es una herramienta ampliamente utilizada por desarrolladores para probar y desarrollar APIs. Con Postman, puedes enviar solicitudes HTTP a un servidor, ver las respuestas, y realizar pruebas de manera eficiente. Es especialmente útil durante el desarrollo de APIs, ya que permite verificar su funcionamiento sin necesidad de crear una interfaz de usuario.
+        </p>
+        
+        <div class="answer">
+            <h4>Características principales de Postman</h4>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">1. Creación y gestión de solicitudes</h4>
+                <p>
+                    Con Postman, puedes crear solicitudes HTTP utilizando diferentes métodos (GET, POST, PUT, DELETE, etc.). Además, te permite añadir parámetros, encabezados y cuerpos de solicitud para simular cualquier tipo de interacción con una API. Todo esto se puede gestionar de manera organizada dentro de colecciones, lo que facilita la reutilización y la colaboración.
+                </p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">2. Pruebas automatizadas</h4>
+                <p>
+                    Una de las características más potentes de Postman es su capacidad para automatizar pruebas de APIs. Puedes escribir scripts en JavaScript para validar las respuestas de las API, como verificar códigos de estado HTTP, comprobar el contenido de las respuestas o realizar operaciones en los datos obtenidos. Esto es especialmente útil para asegurar que las APIs funcionen correctamente a lo largo del tiempo.
+                </p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">3. Colaboración en equipo</h4>
+                <p>
+                    Postman facilita la colaboración entre desarrolladores a través de su capacidad para compartir colecciones, entornos, y variables. Los equipos pueden trabajar juntos en la creación y pruebas de APIs, compartir sus configuraciones y resultados, y mantener un flujo de trabajo coherente. También ofrece integración con sistemas de control de versiones como Git.
+                </p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">4. Entornos y variables</h4>
+                <p>
+                    Postman permite crear "entornos", que son conjuntos de variables que puedes usar para cambiar fácilmente la configuración de las solicitudes. Por ejemplo, puedes definir diferentes entornos para desarrollo, pruebas y producción, cada uno con su propia URL base, claves API, y otros parámetros. Esto facilita la gestión de configuraciones para diferentes etapas del desarrollo.
+                </p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">5. Documentación de APIs</h4>
+                <p>
+                    Postman también permite generar documentación interactiva para las APIs que desarrollas o pruebas. Esta documentación se actualiza automáticamente a medida que las colecciones de solicitudes cambian, y se puede compartir con otros para facilitar la comprensión y uso de la API. Es una excelente manera de mantener la documentación sincronizada con el código.
+                </p>
+            </div>
+    
+            <p>
+                En resumen, Postman es una herramienta esencial para cualquier desarrollador que trabaje con APIs. No solo facilita la creación y prueba de solicitudes, sino que también permite automatizar pruebas, colaborar en equipo y documentar APIs de manera efectiva. Es una pieza clave en el flujo de trabajo de desarrollo y mantenimiento de APIs modernas.
+            </p>
+        </div>
+    </div>
+    <div class="question">
+        <button class="question-btn">
+            <h3 class="question-content">¿Qué es el polimorfismo?</h3>
+        </button>
+        <p>
+            El polimorfismo es un concepto clave en la programación orientada a objetos que permite que una misma función o método pueda ser utilizado por diferentes tipos de objetos, adaptándose al tipo específico de objeto con el que se esté trabajando. Esto significa que una función puede comportarse de maneras distintas dependiendo del objeto que la esté invocando.
+        </p>
+    
+        <div class="answer">
+            <h4>¿Cómo funciona el polimorfismo?</h4>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">1. Herencia y sobrescritura de métodos</h4>
+                <p>
+                    En POO, el polimorfismo se suele implementar a través de la herencia y la sobrescritura de métodos. Esto ocurre cuando una clase hija hereda métodos de una clase padre, pero modifica el comportamiento de esos métodos según sus necesidades. Así, aunque las clases hijas compartan el mismo método con la clase padre, cada una puede ejecutar una versión diferente de ese método.
+                </p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">2. Flexibilidad en el código</h4>
+                <p>
+                    El polimorfismo permite escribir código más flexible y reutilizable. Por ejemplo, se puede crear una función que acepte objetos de diferentes clases, siempre y cuando implementen un método común. De esta forma, no importa qué tipo de objeto se pase a la función, mientras tenga el método esperado, la función se ejecutará correctamente.
+                </p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">3. Polimorfismo y abstracción</h4>
+                <p>
+                    En ocasiones, se utilizan clases abstractas o interfaces para definir métodos que deben ser implementados por todas las clases hijas. Esto asegura que cualquier clase que herede de la clase abstracta, implemente los métodos necesarios, lo que facilita el uso del polimorfismo en el diseño del software.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="question">
+        <button class="question-btn">
+            <h3 class="question-content">¿Qué es un método dunder?</h3>
+        </button>
+        <p>Los métodos dunder, también conocidos como métodos mágicos o métodos especiales, son una característica distintiva de Python. Su nombre proviene de la abreviatura de "double underscores" (doble subrayado) ya que están rodeados por dos guiones bajos antes y después del nombre del método. Estos métodos no son invocados directamente por el usuario, sino que son llamados automáticamente por Python en respuesta a ciertas operaciones o acciones realizadas sobre los objetos.</p>
+        
+        <div class="answer">
+            <div class="answer-section">
+                <h4 class="answer-subsection">Propósito de los métodos dunder</h4>
+                <p class="answer-content">Los métodos dunder permiten personalizar el comportamiento de las instancias de clases de manera muy poderosa. Gracias a ellos, se pueden definir cómo se comportan los objetos en situaciones comunes como la creación de instancias, la comparación, la representación en forma de cadena, y las operaciones matemáticas, entre otras. Estos métodos son esenciales para implementar funcionalidades clave en la programación orientada a objetos en Python.</p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">__init__: Inicializar objetos</h4>
+                <p class="answer-content">El método <code>__init__</code> es uno de los métodos dunder más utilizados. Se llama automáticamente cuando se crea una nueva instancia de una clase. Su propósito principal es inicializar el estado del nuevo objeto, es decir, establecer los valores iniciales de los atributos.</p>
+                <p>Ejemplo de <code>__init__</code>:</p>
+                <pre class="code-example">
+
+                    class Persona:
+                        def __init__(self, nombre, edad):
+                            self.nombre = nombre
+                            self.edad = edad
+
+                    # Creando una instancia de Persona
+                    persona = Persona("Juan", 30)
+                </pre>
+                <p>En este ejemplo, el método <code>__init__</code> se utiliza para asignar valores iniciales a los atributos <code>nombre</code> y <code>edad</code> del objeto <code>persona</code>.</p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">__str__: Representación en cadena</h4>
+                <p class="answer-content">El método <code>__str__</code> es utilizado para definir la representación en forma de cadena de un objeto. Esto es útil cuando necesitas que un objeto sea representado de una manera legible y comprensible cuando se imprime o se convierte en una cadena usando la función <code>str()</code>. Es el método que define lo que se muestra cuando usas <code>print()</code> en una instancia de la clase.</p>
+                <p>Ejemplo de <code>__str__</code>:</p>
+                <pre class="code-example">
+
+                    class Persona:
+                        def __str__(self):
+                            return f"{self.nombre}, {self.edad} años"
+
+                    # Creando una instancia de Persona
+                    persona = Persona("Juan", 30)
+                    print(persona)  # Salida: Juan, 30 años
+                </pre>
+                <p>En este caso, el método <code>__str__</code> permite personalizar cómo se mostrará la información del objeto <code>persona</code> cuando se imprima.</p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">__eq__: Comparar objetos</h4>
+                <p class="answer-content">El método <code>__eq__</code> es otro método dunder que permite personalizar la comparación de igualdad (<code>==</code>) entre dos objetos. Este método se utiliza para definir las condiciones bajo las cuales dos instancias de una clase son consideradas iguales. Si no se define, Python utilizará la implementación por defecto, que simplemente compara las direcciones de memoria de los objetos.</p>
+                <p>Ejemplo de <code>__eq__</code>:</p>
+                <pre class="code-example">
+
+                    class Persona:
+                        def __eq__(self, otra_persona):
+                            return self.nombre == otra_persona.nombre and self.edad == otra_persona.edad
+
+                    # Creando dos instancias de Persona
+                    persona1 = Persona("Juan", 30)
+                    persona2 = Persona("Juan", 30)
+
+                    print(persona1 == persona2)  # Salida: True
+                </pre>
+                <p>En este ejemplo, el método <code>__eq__</code> permite comparar dos objetos <code>persona</code> y determina que son iguales si tienen el mismo nombre y edad.</p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">Otras aplicaciones de los métodos dunder</h4>
+                <p class="answer-content">Además de los ejemplos mencionados, existen muchos otros métodos dunder que permiten personalizar diferentes aspectos del comportamiento de los objetos en Python. Por ejemplo, <code>__add__</code> para definir la suma de objetos, <code>__len__</code> para definir la longitud de un objeto, y <code>__getitem__</code> para hacer que un objeto sea accesible mediante índices, como las listas.</p>
+                <p>Estos métodos son fundamentales para crear clases que se comporten de manera intuitiva y coherente en diferentes contextos, aprovechando al máximo las capacidades de la programación orientada a objetos en Python.</p>
+            </div>
+        </div>
+    </div>
+    <div class="question">
+        <button class="question-btn">
+            <h3 class="question-content">¿Qué es un decorador de Python?</h3>
+        </button>
+        <p>Un decorador en Python es una función especial que permite modificar o extender el comportamiento de otras funciones, métodos o clases sin cambiar su código fuente. Uno de los decoradores más comunes en Python es el <code>@property</code>, utilizado para controlar el acceso a los atributos de una clase, especialmente en contextos de encapsulación de datos.</p>
+        
+        <div class="answer">
+            <div class="answer-section">
+                <h4 class="answer-subsection">Encapsulación de datos y el uso de <code>@property</code></h4>
+                <p class="answer-content">En la programación orientada a objetos, la encapsulación es una práctica que busca proteger los datos internos de una clase. Esto evita que otras partes del programa accedan o modifiquen esos datos de manera no controlada. Python no tiene mecanismos de acceso estrictos como otros lenguajes, pero los decoradores como <code>@property</code> ofrecen una manera de definir claramente cómo se deben acceder y modificar estos atributos.</p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">Definiendo propiedades con <code>@property</code></h4>
+                <p class="answer-content">El decorador <code>@property</code> se utiliza para crear métodos que actúan como getters, permitiendo acceder a los atributos privados o protegidos de una clase como si fueran públicos. Esto mantiene el control sobre el acceso a los datos, mientras que la interfaz de uso sigue siendo sencilla.</p>
+                <p>Ejemplo básico:</p>
+                <pre class="code-example">
+    class Invoice:
+        def __init__(self, client, total):
+            self._client = client
+            self._total = total
+    
+        @property
+        def client(self):
+            return self._client
+    
+        @property
+        def total(self):
+            return self._total
+    
+    instagram = Invoice('Instagram', 200)
+    print(instagram.client)  # Salida: Instagram
+    print(instagram.total)   # Salida: 200
+                </pre>
+                <p>En este ejemplo, los atributos <code>_client</code> y <code>_total</code> son privados (indicados por el guion bajo). Sin embargo, al usar <code>@property</code>, se permite su acceso controlado desde fuera de la clase.</p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">Uso de <code>@property</code> con <code>setter</code></h4>
+                <p class="answer-content">Además de los getters, Python permite definir setters usando el mismo decorador <code>@property</code> seguido de <code>.setter</code>. Esto permite modificar los atributos de manera controlada, evitando que se cambien directamente sin validación o lógica adicional.</p>
+                <p>Ejemplo con setter:</p>
+                <pre class="code-example">
+    class Invoice:
+        def __init__(self, client, total):
+            self._client = client
+            self._total = total
+    
+        @property
+        def client(self):
+            return self._client
+    
+        @client.setter
+        def client(self, client):
+            self._client = client
+    
+    instagram = Invoice('Instagram', 200)
+    instagram.client = 'Facebook'
+    print(instagram.client)  # Salida: Facebook
+                </pre>
+                <p>En este caso, el atributo <code>client</code> puede ser modificado de manera segura utilizando el setter, manteniendo el control sobre cómo se actualiza el valor.</p>
+            </div>
+    
+            <div class="answer-section">
+                <h4 class="answer-subsection">Importancia de los decoradores en la legibilidad y mantenimiento del código</h4>
+                <p class="answer-content">El uso de decoradores como <code>@property</code> no solo mejora la encapsulación, sino que también contribuye a la legibilidad del código. Claramente define cómo deben ser tratados los atributos de una clase, lo que facilita el trabajo en equipo y el mantenimiento de código a largo plazo. Al observar un decorador, otros desarrolladores pueden entender de inmediato cómo deben interactuar con los atributos de la clase.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
